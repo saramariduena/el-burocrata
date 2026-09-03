@@ -30,12 +30,11 @@ export function MainMenu() {
   const [step,       setStep]       = useState<'home' | 'new' | 'ranking'>('home');
   const [name,       setName]       = useState('');
   const [difficulty, setDifficulty] = useState<Difficulty>('normal');
-  const [mode,       setMode]       = useState<'campaign' | 'infinite'>('campaign');
   const [ranking,    setRanking]    = useState<ScoreEntry[]>([]);
 
   function start() {
     if (!name.trim()) return;
-    initGame(name.trim(), difficulty, mode);
+    initGame(name.trim(), difficulty, 'campaign');
   }
 
   function openRanking() {
@@ -199,19 +198,12 @@ export function MainMenu() {
             />
           </div>
 
-          {/* Modo */}
-          <div>
-            <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#94a3b8', marginBottom: 8, letterSpacing: 1 }}>📅 MODO</label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-              {[
-                { id: 'campaign' as const, label: '📅 CAMPAÑA', sub: '4 años de mandato' },
-                { id: 'infinite'  as const, label: '♾️ INFINITO', sub: 'Sin límite de casos' },
-              ].map(m => (
-                <button key={m.id} onClick={() => setMode(m.id)} style={{ padding: 12, borderRadius: 10, border: `2px solid ${mode === m.id ? '#6366f1' : '#334155'}`, background: mode === m.id ? 'rgba(99,102,241,0.15)' : '#0f172a', cursor: 'pointer', textAlign: 'left' }}>
-                  <div style={{ fontWeight: 700, fontSize: 13, color: mode === m.id ? '#818cf8' : '#e2e8f0' }}>{m.label}</div>
-                  <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>{m.sub}</div>
-                </button>
-              ))}
+          {/* Info de partida */}
+          <div style={{ padding: 12, borderRadius: 10, background: 'rgba(99,102,241,0.1)', border: '1px solid #6366f133', display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 22 }}>🎯</span>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 13, color: '#818cf8' }}>Partida de 10 casos</div>
+              <div style={{ fontSize: 11, color: '#64748b', marginTop: 2 }}>Al terminar, tu puntaje entra al ranking del día</div>
             </div>
           </div>
 

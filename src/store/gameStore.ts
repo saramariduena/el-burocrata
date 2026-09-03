@@ -18,6 +18,9 @@ import { computeIndexes } from '@/utils/statistics';
 const SAVE_KEY = 'el-burocrata-save-v2';
 const GAME_VERSION = '1.0.0';
 
+// Cada partida dura 10 casos (para competir parejo en el ranking).
+export const CASES_PER_GAME = 10;
+
 function createInitialIndicators(): GameIndicators {
   return {
     citizenSatisfaction: 70,
@@ -274,6 +277,24 @@ export const useGameStore = create<GameStore>()(
               currentYear: newYear,
               updatedAt: new Date().toISOString(),
             },
+          };
+        });
+      },
+
+      endGame(reason: string, victory = true) {
+        set((state) => {
+          if (!state.save || state.save.isGameOver) return {};
+          return {
+            save: {
+              ...state.save,
+              isGameOver: true,
+              isVictory: victory,
+              gameOverReason: reason,
+              updatedAt: new Date().toISOString(),
+            },
+            currentCase: null,
+            currentEvent: null,
+            showFeedback: false,
           };
         });
       },

@@ -231,6 +231,7 @@ export interface GameStore {
   triggerRandomEvent: (event: RandomEvent) => void;
   resolveEvent: (eventId: string, optionId?: string) => void;
   advanceDay: () => void;
+  endGame: (reason: string, victory?: boolean) => void;
   resetGame: () => void;
 }
 

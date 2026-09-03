@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useGameStore } from '@/store/gameStore';
+import { useGameStore, CASES_PER_GAME } from '@/store/gameStore';
 import { HUD } from '@/components/hud/HUD';
 import { CaseCard } from './CaseCard';
 import { FeedbackModal } from '@/components/modals/FeedbackModal';
@@ -21,6 +21,7 @@ export function GameBoard() {
   const setCurrentCase     = useGameStore((s) => s.setCurrentCase);
   const triggerRandomEvent = useGameStore((s) => s.triggerRandomEvent);
   const advanceDay         = useGameStore((s) => s.advanceDay);
+  const endGame            = useGameStore((s) => s.endGame);
 
   const isMobile = useIsMobile();
 
@@ -34,6 +35,13 @@ export function GameBoard() {
     if (!save || save.isGameOver) return;
     if (currentCase || showFeedback || currentEvent) return;
     if (loadingRef.current) return;
+
+    // Fin de la partida al completar los 10 casos.
+    if (save.statistics.totalCasesResolved >= CASES_PER_GAME) {
+      endGame(`¡Completaste tus ${CASES_PER_GAME} casos! Mirá tu puntaje y el ranking del día.`, true);
+      return;
+    }
+
     loadingRef.current = true;
 
     const canTriggerEvent =
@@ -71,7 +79,7 @@ export function GameBoard() {
     }
 
     setTimeout(() => { loadingRef.current = false; }, 500);
-  }, [save, currentCase, showFeedback, currentEvent, setCurrentCase, triggerRandomEvent, advanceDay]);
+  }, [save, currentCase, showFeedback, currentEvent, setCurrentCase, triggerRandomEvent, advanceDay, endGame]);
 
   if (!save) return null;
   if (save.isGameOver) return <GameOverScreen />;
@@ -91,10 +99,10 @@ export function GameBoard() {
           style={{ width: '100%', maxWidth: 640, marginBottom: 16, display: 'flex', justifyContent: 'space-between' }}
         >
           <div style={{ fontSize: 12, padding: '4px 12px', borderRadius: 20, background: '#1e293b', border: '1px solid #334155', color: '#94a3b8' }}>
-            📅 AÑO {save.currentYear}/4 — DÍA {save.currentDay}
+            👤 {save.playerName}
           </div>
           <div style={{ fontSize: 12, padding: '4px 12px', borderRadius: 20, background: '#1e293b', border: '1px solid #334155', color: '#94a3b8' }}>
-            ✅ {save.statistics.totalCasesResolved} casos resueltos
+            ✅ Caso {Math.min(save.statistics.totalCasesResolved + 1, CASES_PER_GAME)}/{CASES_PER_GAME}
           </div>
         </motion.div>
 
