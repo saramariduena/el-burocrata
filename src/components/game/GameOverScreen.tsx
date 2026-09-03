@@ -1,18 +1,48 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import { computeFinalScore, getLetterGrade } from '@/utils/statistics';
+import { addScore, getTodayScores, type ScoreEntry } from '@/utils/leaderboard';
+
+const LAST_KEY = 'el-burocrata-ranking-last';
 
 export function GameOverScreen() {
   const save      = useGameStore((s) => s.save);
   const resetGame = useGameStore((s) => s.resetGame);
-  if (!save || !save.isGameOver) return null;
 
-  const victory = save.isVictory === true;
-  const score   = computeFinalScore(save.statistics);
+  const [ranking, setRanking] = useState<ScoreEntry[]>([]);
+
+  const victory = save?.isVictory === true;
+  const score   = save ? computeFinalScore(save.statistics) : 0;
   const grade   = getLetterGrade(score);
   const color   = victory ? '#22c55e' : '#ef4444';
+
+  // Guarda el puntaje en el ranking diario (una sola vez por partida).
+  useEffect(() => {
+    if (!save || !save.isGameOver) return;
+    const gameId = save.createdAt;
+    let already = '';
+    try { already = localStorage.getItem(LAST_KEY) ?? ''; } catch { /* sin localStorage */ }
+    if (already === gameId) {
+      setRanking(getTodayScores());
+      return;
+    }
+    const list = addScore({
+      name: save.playerName,
+      score,
+      grade,
+      cases: save.statistics.totalCasesResolved,
+      correct: save.statistics.correctDecisions,
+      difficulty: save.difficulty,
+    });
+    try { localStorage.setItem(LAST_KEY, gameId); } catch { /* sin localStorage */ }
+    setRanking(list);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (!save || !save.isGameOver) return null;
 
   const gradeColor = grade.startsWith('A') ? '#22c55e' : grade === 'B' ? '#3b82f6' : grade === 'C' ? '#eab308' : grade === 'D' ? '#f97316' : '#ef4444';
 
@@ -74,6 +104,34 @@ export function GameOverScreen() {
               <div style={{ fontSize: 13, color: '#22c55e' }}>Los ciudadanos ecuatorianos agradecen tu gestión honesta y transparente</div>
             </div>
           )}
+
+          {/* Ranking del día */}
+          <div style={{ padding: 16, background: '#0f172a', borderRadius: 16, border: '1px solid #334155', marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#facc15', letterSpacing: 1 }}>🏆 RANKING DE HOY</div>
+              <div style={{ fontSize: 10, color: '#64748b' }}>se reinicia cada día</div>
+            </div>
+            {ranking.length === 0 ? (
+              <div style={{ fontSize: 12, color: '#64748b', textAlign: 'center', padding: '8px 0' }}>Sé el primero en el ranking de hoy</div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                {ranking.slice(0, 8).map((e, i) => {
+                  const isMe = e.name.trim().toLowerCase() === save.playerName.trim().toLowerCase();
+                  const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}.`;
+                  return (
+                    <div key={e.ts} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8, background: isMe ? 'rgba(99,102,241,0.18)' : '#1e293b', border: isMe ? '1px solid #6366f1' : '1px solid #33415555' }}>
+                      <span style={{ width: 24, textAlign: 'center', fontSize: 14 }}>{medal}</span>
+                      <span style={{ flex: 1, fontSize: 13, fontWeight: isMe ? 800 : 600, color: isMe ? '#c7d2fe' : '#e2e8f0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {e.name}{isMe ? ' (tú)' : ''}
+                      </span>
+                      <span style={{ fontSize: 11, color: '#64748b' }}>{e.grade}</span>
+                      <span style={{ fontSize: 14, fontWeight: 800, color: '#facc15', minWidth: 34, textAlign: 'right' }}>{e.score}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
           <motion.button
             whileHover={{ scale: 1.02 }}
