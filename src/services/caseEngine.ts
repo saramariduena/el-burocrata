@@ -13,6 +13,7 @@ import publicAdminCases from '@/data/cases/public-administration.json';
 import syllabusCases from '@/data/cases/syllabus-cases.json';
 import extraCases from '@/data/cases/extra-cases.json';
 import newCases from '@/data/cases/new-cases.json';
+import lotdaCases from '@/data/cases/lotda-cases.json';
 
 const ALL_CASES: GameCase[] = [
   ...(transparencyCases as GameCase[]),
@@ -26,6 +27,7 @@ const ALL_CASES: GameCase[] = [
   ...(syllabusCases as GameCase[]),
   ...(extraCases as GameCase[]),
   ...(newCases as GameCase[]),
+  ...(lotdaCases as GameCase[]),
 ];
 
 const RANK_ORDER: PlayerRank[] = [

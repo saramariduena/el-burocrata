@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "LOTDA001",
+    "title": "Ciudadano llega con documento firmado electrónicamente",
+    "description": "Verónica presenta una solicitud firmada con firma electrónica. El compañero de ventanilla dice que 'eso no vale, tiene que venir firmado a mano y en persona'. ¿Qué hacés?",
+    "category": "electronic-signature",
+    "npcId": "citizen-002",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "firma-electronica", "tramite-digital", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA001-A",
+        "text": "Rechazar el documento: solo aceptamos firma manuscrita y presencial",
+        "delta": { "legality": -25, "citizenSatisfaction": -22, "institutionalReputation": -15 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. La Ley Orgánica para la Transformación Digital y Audiovisual (LOTDA, R.O. del 7 de febrero de 2023) obliga a la administración pública a implementar y aceptar la firma electrónica. La Ley de Comercio Electrónico, Firmas Electrónicas y Mensajes de Datos (Art. 14) le reconoce igual validez y los mismos efectos jurídicos que a la firma manuscrita.",
+        "isCorrect": false,
+        "legalReference": "LOTDA (R.O. 7-feb-2023); Ley de Comercio Electrónico Art. 14"
+      },
+      {
+        "id": "LOTDA001-B",
+        "text": "Aceptar el documento: la firma electrónica es válida por ley y equivale a la manuscrita",
+        "delta": { "legality": 22, "citizenSatisfaction": 18, "institutionalReputation": 14 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. La LOTDA impulsa que el Estado acepte la firma electrónica en sus trámites, y la Ley de Comercio Electrónico Art. 14 le da igual validez que a la firma manuscrita. Negar un trámite por estar firmado electrónicamente contradice la política de gobierno electrónico que rectorea el MINTEL.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14"
+      },
+      {
+        "id": "LOTDA001-C",
+        "text": "Aceptarlo pero pedirle además que lo firme a mano 'por seguridad'",
+        "delta": { "legality": -6, "citizenSatisfaction": -8, "institutionalReputation": -4 },
+        "xpReward": 12,
+        "educationalFeedback": "❌ Innecesario. Exigir una firma manuscrita adicional cuando la firma electrónica ya es válida crea una barrera que la ley busca eliminar. La firma electrónica, por sí sola, produce plenos efectos jurídicos (Ley de Comercio Electrónico Art. 14).",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA002",
+    "title": "Doña Rosa no usa internet y teme perder su trámite",
+    "description": "Doña Rosa, adulta mayor de Riobamba, escuchó que 'ahora todo es digital' y cree que ya no podrá hacer sus trámites porque no tiene celular ni internet. Viene angustiada a ventanilla.",
+    "category": "citizen-participation",
+    "npcId": "citizen-003",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "brecha-digital", "inclusion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA002-A",
+        "text": "Decirle que ya no se puede: la ley obliga a hacer todo por internet",
+        "delta": { "legality": -20, "citizenSatisfaction": -25, "institutionalReputation": -18 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Falso. La LOTDA amplía los canales digitales, no elimina la atención presencial. El gobierno electrónico debe respetar la inclusión y la no discriminación (Constitución Art. 11 num. 2). Obligar a un canal único que la persona no puede usar profundizaría la brecha digital.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Constitución Art. 11 num. 2, Art. 66"
+      },
+      {
+        "id": "LOTDA002-B",
+        "text": "Atenderla presencialmente y explicarle que el canal digital es una opción, no una obligación",
+        "delta": { "legality": 20, "citizenSatisfaction": 24, "institutionalReputation": 18 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. El gobierno electrónico que promueve la LOTDA suma canales; no puede excluir a quien no tiene acceso a internet. La atención presencial y el acompañamiento siguen siendo un derecho.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Constitución Art. 11 num. 2, Art. 66"
+      },
+      {
+        "id": "LOTDA002-C",
+        "text": "Ayudarla a crear una cuenta en el celular de un vecino para que 'se vaya acostumbrando'",
+        "delta": { "legality": -8, "citizenSatisfaction": -6, "institutionalReputation": -6 },
+        "xpReward": 10,
+        "educationalFeedback": "❌ Bienintencionado pero riesgoso. Usar el dispositivo de un tercero para gestionar credenciales de Doña Rosa compromete su seguridad y privacidad (LOPDP). La inclusión digital se acompaña con capacitación, sin exponer sus datos.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; LOPDP Art. 15"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA003",
+    "title": "Notificación por correo electrónico",
+    "description": "Un usuario dio su correo para recibir notificaciones del trámite. Un compañero dice que 'la notificación oficial debe ir siempre en papel a la casa, si no, no vale'.",
+    "category": "digital-procedures",
+    "npcId": "citizen-001",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "notificacion-electronica", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA003-A",
+        "text": "Notificar por el correo que el usuario autorizó, dejando constancia del envío",
+        "delta": { "legality": 20, "citizenSatisfaction": 16, "institutionalReputation": 12, "budget": 4 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. La LOTDA impulsa el uso de medios electrónicos en la gestión pública. Si el ciudadano señaló un correo para notificaciones, es un canal válido; solo hay que dejar constancia del envío. Ahorra papel, tiempo y mensajería.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico (mensajes de datos)"
+      },
+      {
+        "id": "LOTDA003-B",
+        "text": "Insistir en notificar solo en papel físico a domicilio",
+        "delta": { "legality": -12, "citizenSatisfaction": -14, "budget": -8 },
+        "xpReward": 8,
+        "educationalFeedback": "❌ Incorrecto. La notificación electrónica es válida cuando el usuario la autorizó. Obligar al papel encarece y ralentiza sin base legal, en contra del gobierno electrónico que promueve la LOTDA.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA004",
+    "title": "Pago de una tasa: ¿ventanilla o en línea?",
+    "description": "Un ciudadano quiere pagar una tasa administrativa desde su casa por transferencia o botón de pago. El cajero dice que 'solo se paga en ventanilla, en efectivo'.",
+    "category": "e-government",
+    "npcId": "citizen-002",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "pago-en-linea", "servicios-digitales", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA004-A",
+        "text": "Habilitar y aceptar el pago electrónico en línea",
+        "delta": { "legality": 18, "citizenSatisfaction": 18, "institutionalReputation": 12 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. La LOTDA promueve servicios públicos digitales, incluidos los medios de pago electrónico. Permitir el pago en línea reduce filas, riesgos de manejo de efectivo y tiempos de trámite.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; simplificación de trámites"
+      },
+      {
+        "id": "LOTDA004-B",
+        "text": "Obligar al pago solo en efectivo y presencial",
+        "delta": { "legality": -10, "citizenSatisfaction": -16, "institutionalReputation": -8 },
+        "xpReward": 8,
+        "educationalFeedback": "❌ Incorrecto. Restringir el pago a efectivo presencial va contra la digitalización de servicios de la LOTDA y aumenta costos y riesgos para todos.",
+        "isCorrect": false,
+        "legalReference": "LOTDA"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA005",
+    "title": "Cita agendada en línea",
+    "description": "Una usuaria llega con su cita reservada por el sistema en línea. En la puerta le dicen que 'las citas por internet no cuentan, hay que hacer fila igual desde las 5 am'.",
+    "category": "digital-procedures",
+    "npcId": "citizen-002",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "agendamiento", "servicios-digitales", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA005-A",
+        "text": "Respetar la cita agendada en línea y atenderla en su turno",
+        "delta": { "legality": 18, "citizenSatisfaction": 20, "institutionalReputation": 14 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Si la institución ofrece agendamiento digital, debe respetarlo; de lo contrario el canal en línea pierde sentido. La LOTDA busca que los servicios digitales sean reales y confiables para el ciudadano.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; calidad del servicio digital"
+      },
+      {
+        "id": "LOTDA005-B",
+        "text": "Ignorar la cita y mandarla a hacer fila desde temprano",
+        "delta": { "legality": -12, "citizenSatisfaction": -22, "institutionalReputation": -12 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. Desconocer el agendamiento en línea frustra al ciudadano y contradice el gobierno electrónico. Un canal digital que no se honra es peor que no tenerlo.",
+        "isCorrect": false,
+        "legalReference": "LOTDA"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA006",
+    "title": "Documento con firma electrónica descargado del sistema",
+    "description": "Un usuario presenta un certificado descargado del portal, con firma electrónica y código de verificación. El funcionario exige 'el original con sello húmedo'.",
+    "category": "electronic-signature",
+    "npcId": "citizen-001",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "firma-electronica", "verificacion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA006-A",
+        "text": "Aceptar el documento y verificar su validez con el código en el portal oficial",
+        "delta": { "legality": 20, "citizenSatisfaction": 16, "institutionalReputation": 14 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Un documento con firma electrónica y código de verificación es original y auténtico; se comprueba en línea. La LOTDA y la Ley de Comercio Electrónico (Art. 14) le dan plena validez, sin necesidad de sello húmedo.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14"
+      },
+      {
+        "id": "LOTDA006-B",
+        "text": "Rechazarlo por no tener sello húmedo ni papel membretado",
+        "delta": { "legality": -14, "citizenSatisfaction": -16, "institutionalReputation": -10 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. El 'sello húmedo' no es requisito de validez de un documento electrónico firmado. Exigirlo contradice la LOTDA y la equivalencia legal de la firma electrónica.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA007",
+    "title": "¿Se puede verificar un documento con su código QR?",
+    "description": "Un ciudadano trae un certificado con código QR de verificación. El compañero no sabe si eso 'es de fiar' y quiere pedir que lo tramiten todo de nuevo en físico.",
+    "category": "digital-procedures",
+    "npcId": "citizen-004",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "verificacion", "codigo-QR", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA007-A",
+        "text": "Escanear el QR y verificar la autenticidad en el sistema oficial",
+        "delta": { "legality": 18, "citizenSatisfaction": 16, "institutionalReputation": 12 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Los mecanismos de verificación (QR, códigos, validación en línea) permiten comprobar autenticidad e integridad sin rehacer el trámite. Es el tipo de simplificación que impulsa la LOTDA.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico (integridad del mensaje de datos)"
+      },
+      {
+        "id": "LOTDA007-B",
+        "text": "Ignorar el QR y hacer que repita todo el trámite en papel",
+        "delta": { "legality": -10, "citizenSatisfaction": -14, "budget": -6 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Duplicar el trámite pese a existir verificación digital es ineficiente y contrario a la LOTDA. Primero se verifica; no se rehace por desconocimiento.",
+        "isCorrect": false,
+        "legalReference": "LOTDA"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA008",
+    "title": "Trámite disponible en la app móvil",
+    "description": "Una usuaria quiere iniciar un trámite desde la app oficial en su celular. El funcionario le dice que 'la app es solo para ver información, todo trámite se hace aquí en persona'.",
+    "category": "e-government",
+    "npcId": "citizen-002",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "app-movil", "servicios-en-linea", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA008-A",
+        "text": "Orientarla para iniciar el trámite por la app y ofrecer apoyo si lo necesita",
+        "delta": { "legality": 16, "citizenSatisfaction": 18, "institutionalReputation": 12 },
+        "xpReward": 50,
+        "educationalFeedback": "✅ Correcto. Si el trámite está habilitado en la app, guiar al ciudadano por el canal digital cumple el objetivo de la LOTDA: servicios accesibles desde cualquier lugar. El apoyo del funcionario suma inclusión.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; servicios públicos digitales"
+      },
+      {
+        "id": "LOTDA008-B",
+        "text": "Obligarla a hacer todo presencial aunque el trámite exista en la app",
+        "delta": { "legality": -10, "citizenSatisfaction": -16, "institutionalReputation": -8 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Negar el canal digital disponible desperdicia la inversión en la app y va contra la LOTDA. La presencialidad debe ser una opción, no una imposición cuando existe la vía en línea.",
+        "isCorrect": false,
+        "legalReference": "LOTDA"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA009",
+    "title": "Formulario que aún pide 'traer 3 copias'",
+    "description": "El instructivo de un trámite exige presentar tres copias impresas de un documento que la institución ya emite y guarda digitalmente. Un usuario pregunta si de verdad necesita gastar en copias.",
+    "category": "digital-procedures",
+    "npcId": "citizen-003",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "cero-papeles", "simplificacion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA009-A",
+        "text": "Eliminar el requisito de copias del documento que la institución ya posee en digital",
+        "delta": { "legality": 18, "citizenSatisfaction": 18, "institutionalReputation": 12, "budget": 4 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Pedir copias de algo que la institución ya tiene en digital es una barrera innecesaria. La LOTDA y la simplificación de trámites promueven eliminar requisitos redundantes y avanzar hacia 'cero papeles'.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Optimización y Eficiencia de Trámites Administrativos"
+      },
+      {
+        "id": "LOTDA009-B",
+        "text": "Mantener el requisito 'porque así está en el instructivo'",
+        "delta": { "legality": -8, "citizenSatisfaction": -12, "budget": -4 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Los instructivos deben actualizarse a la política de simplificación. Conservar requisitos redundantes solo por costumbre contradice la LOTDA y carga al ciudadano con gastos evitables.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; simplificación de trámites"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA010",
+    "title": "Certificado que se obtiene en línea, pero lo mandan a otra oficina",
+    "description": "Un ciudadano necesita un certificado que ya se emite automáticamente en el portal. El funcionario, por costumbre, quiere enviarlo a formar fila en otra oficina para que 'se lo impriman y sellen'.",
+    "category": "e-government",
+    "npcId": "citizen-001",
+    "requiredRank": "auxiliary",
+    "difficulty": "easy",
+    "tags": ["LOTDA", "autoservicio", "servicios-en-linea", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA010-A",
+        "text": "Ayudarlo a descargar el certificado en línea al instante, con su verificación digital",
+        "delta": { "legality": 18, "citizenSatisfaction": 20, "institutionalReputation": 12, "budget": 2 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Si el certificado se emite en el portal con validez y verificación, no hay que enviar al ciudadano a otra oficina. La LOTDA busca el autoservicio digital: obtener el documento donde y cuando lo necesite.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; servicios públicos digitales"
+      },
+      {
+        "id": "LOTDA010-B",
+        "text": "Mandarlo a otra oficina a hacer fila para imprimir y sellar",
+        "delta": { "legality": -10, "citizenSatisfaction": -18, "institutionalReputation": -8 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Enviar al ciudadano a otra fila por un documento que ya está disponible en línea anula el beneficio del gobierno electrónico y desperdicia su tiempo.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; simplificación de trámites"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA011",
+    "title": "¿La firma electrónica sirve para un convenio del Estado?",
+    "description": "El área jurídica prepara un convenio interinstitucional. Un funcionario insiste en imprimir, firmar a mano, escanear y volver a subir el documento 'porque un convenio serio no se firma con clic'.",
+    "category": "electronic-signature",
+    "npcId": "comptroller-001",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "firma-electronica", "gestion-documental", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA011-A",
+        "text": "Firmar el convenio con firma electrónica de los representantes legales",
+        "delta": { "legality": 22, "institutionalReputation": 16, "budget": 6, "citizenSatisfaction": 8 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Correcto. La LOTDA impulsa la firma electrónica en la gestión pública y la Ley de Comercio Electrónico Art. 14 le reconoce plenos efectos jurídicos. Firmar electrónicamente es válido, más rápido y reduce costos. La cadena 'imprimir-firmar-escanear' es lo que la ley busca eliminar.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14"
+      },
+      {
+        "id": "LOTDA011-B",
+        "text": "Imprimir, firmar a mano, escanear y subir el PDF escaneado",
+        "delta": { "legality": -6, "institutionalReputation": -8, "budget": -6 },
+        "xpReward": 12,
+        "educationalFeedback": "❌ Ineficiente y contrario a la LOTDA. Un PDF escaneado tiene menos garantías técnicas que una firma electrónica (que asegura identidad e integridad). La ley promueve digitalizar de origen, no digitalizar papel.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 14, 51"
+      },
+      {
+        "id": "LOTDA011-C",
+        "text": "Verificar que los firmantes tengan certificado de firma electrónica vigente y proceder digitalmente",
+        "delta": { "legality": 20, "institutionalReputation": 14, "citizenSatisfaction": 6 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Prudente y correcto. La firma electrónica requiere un certificado vigente de una entidad de certificación acreditada. Verificar su vigencia antes de firmar garantiza validez jurídica plena.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 20, 30"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA012",
+    "title": "Otra institución pide el mismo documento que el ciudadano ya entregó",
+    "description": "Un ciudadano ya subió su cédula y un certificado a una plataforma estatal. Otra institución pública le exige volver a presentarlos físicamente. Él reclama: '¿no se supone que el Estado ya los tiene?'",
+    "category": "interoperability",
+    "npcId": "citizen-001",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "interoperabilidad", "una-sola-vez", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA012-A",
+        "text": "Gestionar el dato entre instituciones por interoperabilidad, sin volver a pedírselo al ciudadano",
+        "delta": { "legality": 22, "citizenSatisfaction": 20, "institutionalReputation": 16 },
+        "xpReward": 70,
+        "educationalFeedback": "✅ Correcto. El gobierno electrónico de la LOTDA se apoya en la interoperabilidad y el principio de 'una sola vez': si el Estado ya tiene el dato, no debe volver a exigirlo. Esto reduce cargas, tiempos y costos.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Optimización y Eficiencia de Trámites Administrativos"
+      },
+      {
+        "id": "LOTDA012-B",
+        "text": "Exigir que traiga todo de nuevo en físico 'porque cada institución maneja lo suyo'",
+        "delta": { "legality": -16, "citizenSatisfaction": -22, "institutionalReputation": -12 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. Duplicar requisitos que el Estado ya posee contradice la LOTDA. El ciudadano no debe pagar el precio de que las instituciones no compartan información entre sí.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; simplificación de trámites"
+      },
+      {
+        "id": "LOTDA012-C",
+        "text": "Aceptar copias digitales que el propio ciudadano reenvíe por correo",
+        "delta": { "legality": 6, "citizenSatisfaction": 6, "institutionalReputation": 4 },
+        "xpReward": 25,
+        "educationalFeedback": "◐ Mejora parcial. Evitás el papel, pero seguís cargando al ciudadano con la tarea. La meta de la LOTDA es la interoperabilidad entre entidades: que los datos fluyan de forma segura, no que el ciudadano actúe de mensajero.",
+        "isCorrect": false,
+        "legalReference": "LOTDA — interoperabilidad"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA013",
+    "title": "¿Un correo electrónico sirve como prueba?",
+    "description": "En un procedimiento administrativo, una parte presenta como prueba una cadena de correos electrónicos. La contraparte alega que 'un email no es un documento y no prueba nada'.",
+    "category": "digital-procedures",
+    "npcId": "comptroller-001",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "mensajes-de-datos", "valor-probatorio", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA013-A",
+        "text": "Admitir los correos como mensajes de datos con valor probatorio, valorando su integridad",
+        "delta": { "legality": 22, "institutionalReputation": 16, "citizenSatisfaction": 8 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. La Ley de Comercio Electrónico, Firmas Electrónicas y Mensajes de Datos reconoce a los mensajes de datos (incluidos correos) valor jurídico y probatorio. La LOTDA refuerza este marco. Se valora su integridad, pero no se descarta por ser electrónico.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 2, 52; COGEP"
+      },
+      {
+        "id": "LOTDA013-B",
+        "text": "Descartar los correos de plano por no ser 'documentos en papel'",
+        "delta": { "legality": -18, "institutionalReputation": -12 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. Los mensajes de datos tienen valor probatorio por ley. Rechazarlos solo por su formato electrónico vulnera la Ley de Comercio Electrónico y el debido proceso.",
+        "isCorrect": false,
+        "legalReference": "Ley de Comercio Electrónico Art. 2, 52"
+      },
+      {
+        "id": "LOTDA013-C",
+        "text": "Admitirlos pero exigir verificación de integridad y origen antes de valorarlos",
+        "delta": { "legality": 20, "institutionalReputation": 14 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Prudente y correcto. Los correos son admisibles y su fuerza probatoria depende de acreditar integridad y origen. Ese análisis técnico-jurídico es la forma adecuada de valorarlos.",
+        "isCorrect": true,
+        "legalReference": "Ley de Comercio Electrónico; COGEP"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA014",
+    "title": "¿Cuánto tiempo conservar los documentos electrónicos?",
+    "description": "El área de archivo quiere borrar expedientes electrónicos 'para liberar espacio en el servidor', incluyendo documentos con firma electrónica de trámites recientes.",
+    "category": "document-management",
+    "npcId": "comptroller-001",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "conservacion", "archivo-digital", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA014-A",
+        "text": "Conservar los documentos electrónicos según las tablas de retención documental",
+        "delta": { "legality": 22, "institutionalReputation": 16 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. Los documentos electrónicos tienen el mismo valor que los físicos y deben conservarse según la gestión documental. La Ley de Comercio Electrónico admite conservar mensajes de datos si se garantiza su integridad y accesibilidad.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 8; Ley del Sistema Nacional de Archivos"
+      },
+      {
+        "id": "LOTDA014-B",
+        "text": "Borrarlos para liberar espacio, total 'ya están tramitados'",
+        "delta": { "legality": -22, "institutionalReputation": -16 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Grave. Eliminar documentos sujetos a conservación puede constituir pérdida de información pública y afectar controles posteriores. El espacio se resuelve con almacenamiento, no destruyendo expedientes.",
+        "isCorrect": false,
+        "legalReference": "Ley del Sistema Nacional de Archivos; Ley de Comercio Electrónico Art. 8"
+      },
+      {
+        "id": "LOTDA014-C",
+        "text": "Migrar y respaldar los documentos garantizando integridad antes de cualquier depuración",
+        "delta": { "legality": 20, "institutionalReputation": 16, "budget": -6 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Excelente. Respaldar y migrar preservando integridad y legibilidad cumple la Ley de Comercio Electrónico (Art. 8). La depuración solo procede sobre lo que la tabla de retención ya permite eliminar.",
+        "isCorrect": true,
+        "legalReference": "Ley de Comercio Electrónico Art. 8; normativa de archivo"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA015",
+    "title": "Portal público que no usan las personas con discapacidad visual",
+    "description": "Un colectivo advierte que el nuevo portal de trámites no es usable con lectores de pantalla: las personas con discapacidad visual no pueden completar el trámite en línea.",
+    "category": "digital-government",
+    "npcId": "ngo-001",
+    "requiredRank": "coordinator",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "accesibilidad", "inclusion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA015-A",
+        "text": "Corregir el portal para cumplir estándares de accesibilidad web",
+        "delta": { "legality": 22, "citizenSatisfaction": 18, "institutionalReputation": 16, "budget": -8 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Correcto. El gobierno electrónico debe ser inclusivo. La Constitución (Art. 47) y la Ley Orgánica de Discapacidades exigen accesibilidad; los servicios digitales de la LOTDA deben cumplir estándares de accesibilidad web para no excluir a nadie.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Constitución Art. 47; Ley Orgánica de Discapacidades"
+      },
+      {
+        "id": "LOTDA015-B",
+        "text": "Dejar el portal como está y decir que 'esas personas vayan presencialmente'",
+        "delta": { "legality": -18, "citizenSatisfaction": -18, "institutionalReputation": -14 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto y discriminatorio. Un servicio digital inaccesible excluye a personas con discapacidad y vulnera sus derechos. La accesibilidad no es opcional en el gobierno electrónico.",
+        "isCorrect": false,
+        "legalReference": "Constitución Art. 47; Ley Orgánica de Discapacidades"
+      },
+      {
+        "id": "LOTDA015-C",
+        "text": "Habilitar de inmediato un canal alterno mientras se corrige la accesibilidad del portal",
+        "delta": { "legality": 20, "citizenSatisfaction": 16, "institutionalReputation": 14, "budget": -4 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Muy bien. Garantizás el acceso hoy con un canal alterno y corregís la causa de fondo. La meta es un portal accesible; el canal alterno es un puente temporal.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley Orgánica de Discapacidades"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA016",
+    "title": "Trámite societario que exige todo en papel",
+    "description": "Una emprendedora quiere constituir su compañía usando los medios electrónicos que habilitaron las reformas. La oficina insiste en trámites 100% físicos.",
+    "category": "digital-procedures",
+    "npcId": "business-001",
+    "requiredRank": "coordinator",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "tramite-en-linea", "Ley-de-Companias", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA016-A",
+        "text": "Aplicar los medios electrónicos habilitados por las reformas a la Ley de Compañías y Ley de Registro",
+        "delta": { "legality": 22, "citizenSatisfaction": 18, "institutionalReputation": 14, "budget": 4 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. La LOTDA reformó la Ley de Compañías, la Ley de Registro y el Código de Comercio para habilitar actuaciones por medios electrónicos. Facilitar la constitución digital de empresas reduce tiempos y costos.",
+        "isCorrect": true,
+        "legalReference": "LOTDA (reformas Ley de Compañías, Ley de Registro, Código de Comercio)"
+      },
+      {
+        "id": "LOTDA016-B",
+        "text": "Exigir el trámite 100% físico 'porque así siempre se hizo'",
+        "delta": { "legality": -14, "citizenSatisfaction": -16, "institutionalReputation": -10 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Las reformas de la LOTDA habilitaron medios electrónicos para agilizar estos trámites. Negarlos por costumbre incumple la ley.",
+        "isCorrect": false,
+        "legalReference": "LOTDA (reformas societarias y registrales)"
+      },
+      {
+        "id": "LOTDA016-C",
+        "text": "Verificar qué actos habilitó la reforma y ofrecer la vía electrónica disponible",
+        "delta": { "legality": 20, "citizenSatisfaction": 16, "institutionalReputation": 12 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. Lo profesional es identificar qué pasos ya admiten medios electrónicos y ofrecerlos, cumpliendo sus requisitos (firma electrónica, validación). Digitalizar con base legal, no por impulso.",
+        "isCorrect": true,
+        "legalReference": "LOTDA (reformas Ley de Compañías, Código de Comercio)"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA017",
+    "title": "Identidad digital: acceso seguro a los servicios en línea",
+    "description": "El portal permite acceder con usuario y contraseña débiles. Se propone exigir una autenticación más fuerte para trámites que afectan datos y dinero del ciudadano. Un directivo dice que 'complica al usuario'.",
+    "category": "digital-government",
+    "npcId": "citizen-004",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "identidad-digital", "autenticacion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA017-A",
+        "text": "Implementar autenticación fuerte (por ejemplo, doble factor) para trámites sensibles",
+        "delta": { "legality": 20, "citizenSatisfaction": 10, "institutionalReputation": 16 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. La identidad digital confiable es base del gobierno electrónico: protege al ciudadano frente a suplantación y fraude. La LOTDA y la LOPDP exigen medidas de seguridad proporcionales al riesgo de los datos tratados.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP Art. 37, 38 (seguridad)"
+      },
+      {
+        "id": "LOTDA017-B",
+        "text": "Dejar contraseñas débiles porque 'así es más cómodo'",
+        "delta": { "legality": -16, "institutionalReputation": -14, "citizenSatisfaction": -6 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. La comodidad no puede sacrificar la seguridad de la identidad digital. Un acceso débil facilita suplantaciones y compromete datos personales, en contra de la LOTDA y la LOPDP.",
+        "isCorrect": false,
+        "legalReference": "LOPDP; LOTDA"
+      },
+      {
+        "id": "LOTDA017-C",
+        "text": "Aplicar autenticación fuerte solo en trámites sensibles y mantener acceso simple para consultas básicas",
+        "delta": { "legality": 20, "citizenSatisfaction": 14, "institutionalReputation": 14 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Excelente. Seguridad proporcional al riesgo: refuerzo donde hay datos o dinero, y sencillez donde el riesgo es bajo. Equilibra protección y usabilidad, principio clave del gobierno electrónico.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP (seguridad proporcional al riesgo)"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA018",
+    "title": "Firma electrónica emitida por otra entidad certificadora acreditada",
+    "description": "Un ciudadano firmó con un certificado de una entidad de certificación acreditada distinta a la que usa la institución. Un funcionario duda si 'esa firma de otra empresa vale aquí'.",
+    "category": "electronic-signature",
+    "npcId": "business-001",
+    "requiredRank": "analyst",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "firma-electronica", "entidades-de-certificacion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA018-A",
+        "text": "Aceptar la firma si el certificado proviene de una entidad de certificación acreditada y está vigente",
+        "delta": { "legality": 22, "citizenSatisfaction": 14, "institutionalReputation": 14 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. La validez de la firma electrónica no depende de 'qué empresa la emitió', sino de que provenga de una entidad de certificación acreditada y el certificado esté vigente. La LOTDA y la Ley de Comercio Electrónico reconocen estas firmas con plenos efectos.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico Art. 20, 29, 30"
+      },
+      {
+        "id": "LOTDA018-B",
+        "text": "Rechazarla porque no es de la certificadora que usa la institución",
+        "delta": { "legality": -16, "citizenSatisfaction": -14, "institutionalReputation": -10 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. Exigir una certificadora específica es una barrera indebida. Cualquier firma de una entidad acreditada y vigente es válida; negarlo discrimina y contradice la LOTDA.",
+        "isCorrect": false,
+        "legalReference": "Ley de Comercio Electrónico Art. 20, 30"
+      },
+      {
+        "id": "LOTDA018-C",
+        "text": "Aceptarla tras verificar la acreditación de la entidad y la vigencia del certificado",
+        "delta": { "legality": 20, "institutionalReputation": 14 },
+        "xpReward": 55,
+        "educationalFeedback": "✅ Correcto. La verificación de acreditación y vigencia es el control técnico adecuado. Cumplido eso, la firma es válida sin importar cuál sea la certificadora acreditada.",
+        "isCorrect": true,
+        "legalReference": "Ley de Comercio Electrónico Art. 20, 30"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA019",
+    "title": "Funcionarios sin formación para atender el canal digital",
+    "description": "Se lanzó un nuevo servicio en línea, pero el personal no sabe usarlo y sigue mandando a la gente a ventanilla. El canal digital está prácticamente sin uso.",
+    "category": "digital-government",
+    "npcId": "minister-002",
+    "requiredRank": "coordinator",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "capacitacion", "adopcion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA019-A",
+        "text": "Capacitar al personal y acompañar la adopción del canal digital con soporte",
+        "delta": { "legality": 18, "citizenSatisfaction": 16, "institutionalReputation": 16, "budget": -8 },
+        "xpReward": 60,
+        "educationalFeedback": "✅ Correcto. La transformación digital de la LOTDA no es solo tecnología: requiere capacitar a los servidores públicos para que el canal en línea funcione. Sin adopción interna, la inversión digital se desperdicia.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; gestión del cambio y capacitación"
+      },
+      {
+        "id": "LOTDA019-B",
+        "text": "Dejar que cada quien siga como sabe y mantener todo en ventanilla",
+        "delta": { "legality": -10, "citizenSatisfaction": -12, "institutionalReputation": -10, "budget": -6 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Sin capacitación ni acompañamiento, el servicio digital fracasa y se pierde la inversión. La LOTDA implica gestionar el cambio, no solo comprar sistemas.",
+        "isCorrect": false,
+        "legalReference": "LOTDA"
+      },
+      {
+        "id": "LOTDA019-C",
+        "text": "Capacitar, medir el uso del canal y ajustar el servicio según la experiencia del usuario",
+        "delta": { "legality": 18, "citizenSatisfaction": 18, "institutionalReputation": 16, "budget": -6 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Excelente. Capacitás, medís la adopción y mejorás el servicio con datos reales de uso. Ese ciclo de mejora continua es lo que consolida el gobierno electrónico.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; mejora continua del servicio digital"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA020",
+    "title": "¿Quién es la entidad rectora de la transformación digital?",
+    "description": "Varias instituciones compran plataformas digitales por su cuenta, sin coordinación, generando sistemas que no se comunican entre sí. Se pide definir quién debe rectorar la política digital del Estado.",
+    "category": "digital-government",
+    "npcId": "assembly-001",
+    "requiredRank": "director",
+    "difficulty": "normal",
+    "tags": ["LOTDA", "MINTEL", "rectoria", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA020-A",
+        "text": "Reconocer al MINTEL como rector que transversaliza la adopción de tecnologías digitales en el Estado",
+        "delta": { "legality": 22, "institutionalReputation": 18, "citizenSatisfaction": 10, "budget": 6 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Correcto. La LOTDA encarga al Ministerio de Telecomunicaciones y de la Sociedad de la Información (MINTEL) transversalizar la adopción de tecnologías digitales en la administración y los servicios públicos. Una rectoría clara evita compras aisladas e incompatibles.",
+        "isCorrect": true,
+        "legalReference": "LOTDA — rectoría del MINTEL"
+      },
+      {
+        "id": "LOTDA020-B",
+        "text": "Dejar que cada institución compre y decida su tecnología sin coordinación central",
+        "delta": { "legality": -18, "institutionalReputation": -14, "budget": -16 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. La descoordinación produce islas tecnológicas que no interoperan, duplican gasto y frustran al ciudadano. La LOTDA busca una política digital transversal bajo la rectoría del MINTEL.",
+        "isCorrect": false,
+        "legalReference": "LOTDA — rectoría del MINTEL; interoperabilidad"
+      },
+      {
+        "id": "LOTDA020-C",
+        "text": "Crear una nueva entidad paralela para cada ministerio y así 'especializar' lo digital",
+        "delta": { "legality": -8, "institutionalReputation": -8, "budget": -12 },
+        "xpReward": 10,
+        "educationalFeedback": "❌ Ineficiente. Multiplicar entidades rectoras fragmenta la política digital y encarece el Estado. La LOTDA ya define una rectoría transversal en el MINTEL; el reto es coordinar bajo ese marco.",
+        "isCorrect": false,
+        "legalReference": "LOTDA — rectoría del MINTEL"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA021",
+    "title": "Acto que la reforma legal permite realizar en forma electrónica",
+    "description": "Un usuario quiere realizar un trámite que antes exigía papel y presencia física. La LOTDA reformó varias leyes (Notarial, de Registro, Código de Comercio, COGEP) para habilitar medios electrónicos. El funcionario duda si puede hacerse en línea.",
+    "category": "digital-procedures",
+    "npcId": "citizen-002",
+    "requiredRank": "coordinator",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "reformas", "medios-electronicos", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA021-A",
+        "text": "Verificar si la reforma habilita el medio electrónico para ese acto y, de ser así, tramitarlo en línea",
+        "delta": { "legality": 24, "citizenSatisfaction": 18, "institutionalReputation": 16 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. La LOTDA reformó, entre otras, la Ley Notarial, la Ley de Registro, el Código de Comercio y el COGEP para habilitar actuaciones por medios electrónicos. Lo profesional es verificar la reforma aplicable al acto concreto y, si está habilitado, permitir la vía digital.",
+        "isCorrect": true,
+        "legalReference": "LOTDA (reformas a Ley Notarial, Ley de Registro, Código de Comercio, COGEP)"
+      },
+      {
+        "id": "LOTDA021-B",
+        "text": "Negarlo automáticamente: 'esto siempre se ha hecho en papel'",
+        "delta": { "legality": -16, "citizenSatisfaction": -18, "institutionalReputation": -12 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. 'Siempre se hizo así' no es fundamento jurídico. La LOTDA modificó expresamente varias leyes para admitir medios electrónicos. Negar sin revisar la reforma vigente incumple la ley.",
+        "isCorrect": false,
+        "legalReference": "LOTDA (reformas normativas)"
+      },
+      {
+        "id": "LOTDA021-C",
+        "text": "Permitir cualquier acto en línea sin verificar la reforma, por 'estar todo digitalizado'",
+        "delta": { "legality": -12, "institutionalReputation": -10 },
+        "xpReward": 8,
+        "educationalFeedback": "❌ Riesgoso. No todo acto quedó habilitado en forma electrónica; depende de lo que cada reforma estableció y de sus requisitos (firma electrónica, validación notarial). Primero se confirma la base legal, luego se digitaliza.",
+        "isCorrect": false,
+        "legalReference": "LOTDA — verificar reforma aplicable por acto"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA022",
+    "title": "Certificado de firma electrónica revocado",
+    "description": "Se detecta que un funcionario siguió firmando documentos oficiales con un certificado de firma electrónica que ya había sido revocado. Hay trámites firmados después de la revocación.",
+    "category": "cybersecurity",
+    "npcId": "comptroller-001",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "firma-electronica", "certificado-revocado", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA022-A",
+        "text": "Identificar los documentos firmados tras la revocación, reportar y regularizarlos con firma válida",
+        "delta": { "legality": 24, "institutionalReputation": 20 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. Una firma realizada con certificado revocado no es válida (Ley de Comercio Electrónico Art. 24, 26). Hay que identificar los actos afectados, reportar el incidente y regularizarlos con una firma vigente.",
+        "isCorrect": true,
+        "legalReference": "Ley de Comercio Electrónico Art. 24, 26; LOTDA"
+      },
+      {
+        "id": "LOTDA022-B",
+        "text": "Ignorarlo: 'igual el funcionario existe y quiso firmar, no pasa nada'",
+        "delta": { "legality": -24, "institutionalReputation": -18 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Grave. La revocación deja sin validez esas firmas; ignorarlo expone a la institución a nulidades y responsabilidades. La validez no depende de la voluntad, sino de un certificado vigente.",
+        "isCorrect": false,
+        "legalReference": "Ley de Comercio Electrónico Art. 24, 26"
+      },
+      {
+        "id": "LOTDA022-C",
+        "text": "Anular hacia atrás todos los trámites del funcionario, incluso los firmados con certificado vigente",
+        "delta": { "legality": -8, "institutionalReputation": -8, "citizenSatisfaction": -6 },
+        "xpReward": 12,
+        "educationalFeedback": "❌ Desproporcionado. Solo se afectan los actos firmados después de la revocación; los firmados con certificado vigente son válidos. Anularlo todo genera inseguridad jurídica innecesaria.",
+        "isCorrect": false,
+        "legalReference": "Ley de Comercio Electrónico Art. 24"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA023",
+    "title": "Expediente de contratación pública en papel duplicado",
+    "description": "Una unidad mantiene el expediente de contratación en papel y en digital, con diferencias entre ambos. Ante una auditoría, no queda claro cuál es el válido.",
+    "category": "public-contracting",
+    "npcId": "comptroller-001",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "expediente-electronico", "SERCOP", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA023-A",
+        "text": "Adoptar el expediente electrónico como fuente oficial, con trazabilidad y respaldo",
+        "delta": { "legality": 24, "institutionalReputation": 20, "budget": 6 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. La LOTDA y la contratación pública electrónica (SERCOP) apuntan al expediente digital como fuente única, con trazabilidad y sellos de tiempo. Mantener dos versiones divergentes destruye la certeza; el expediente electrónico es más auditable.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOSNCP; normativa SERCOP"
+      },
+      {
+        "id": "LOTDA023-B",
+        "text": "Dejar ambos expedientes conviviendo, cada área que use el que prefiera",
+        "delta": { "legality": -18, "institutionalReputation": -16 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. Dos expedientes divergentes sin fuente oficial generan riesgo de fraude, errores y observaciones de control. El gobierno electrónico exige una única fuente confiable y trazable.",
+        "isCorrect": false,
+        "legalReference": "LOSNCP; normativa SERCOP"
+      },
+      {
+        "id": "LOTDA023-C",
+        "text": "Conciliar ambos, documentar las diferencias y establecer el digital como oficial en adelante",
+        "delta": { "legality": 22, "institutionalReputation": 18, "budget": -4 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Muy bien. Conciliás lo existente, dejas constancia de las diferencias y fijas el expediente electrónico como oficial hacia adelante. Es la transición ordenada que pide la digitalización del Estado.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; normativa SERCOP y de archivo"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA024",
+    "title": "Presión para saltarse la rectoría del MINTEL",
+    "description": "Un alto funcionario ordena comprar de urgencia una plataforma tecnológica costosa, sin coordinar con el MINTEL ni verificar interoperabilidad, 'porque hay que mostrar resultados ya'.",
+    "category": "state-modernization",
+    "npcId": "minister-001",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "MINTEL", "gobernanza-digital", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA024-A",
+        "text": "Coordinar con la rectoría del MINTEL y exigir criterios de interoperabilidad y seguridad antes de comprar",
+        "delta": { "legality": 24, "institutionalReputation": 18, "budget": 8 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. La LOTDA asigna al MINTEL la rectoría para transversalizar la adopción tecnológica. Coordinar y exigir interoperabilidad y seguridad evita comprar una isla tecnológica cara e incompatible. La prisa política no justifica saltarse la gobernanza.",
+        "isCorrect": true,
+        "legalReference": "LOTDA — rectoría del MINTEL"
+      },
+      {
+        "id": "LOTDA024-B",
+        "text": "Ejecutar la compra de urgencia sin coordinar, como ordenó el superior",
+        "delta": { "legality": -22, "institutionalReputation": -16, "budget": -14 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. Comprar sin coordinación ni interoperabilidad contradice la LOTDA y arriesga recursos en sistemas que no se integran. Una orden no exime de cumplir la ley y los controles.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; LOSNCP"
+      },
+      {
+        "id": "LOTDA024-C",
+        "text": "Dejar constancia escrita de la observación legal y elevar la decisión con alternativas",
+        "delta": { "legality": 20, "institutionalReputation": 14 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Correcto y profesional. Documentar la observación y proponer alternativas protege a la institución y al funcionario, y mantiene la decisión dentro del marco de la LOTDA.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; deber de advertencia del servidor público"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA025",
+    "title": "Datos abiertos vs. 'mejor no publicar nada'",
+    "description": "Una unidad genera datos de gestión que podrían publicarse como datos abiertos para transparencia e innovación. Un jefe prefiere 'no publicar nada, no sea que nos critiquen'.",
+    "category": "open-data",
+    "npcId": "journalist-001",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "datos-abiertos", "transparencia", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA025-A",
+        "text": "Publicar los datos abiertos no sensibles en formatos reutilizables",
+        "delta": { "legality": 22, "citizenSatisfaction": 16, "institutionalReputation": 16 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Correcto. El gobierno electrónico y la transparencia (LOTAIP) favorecen la apertura de datos públicos no sensibles en formatos reutilizables. Los datos abiertos habilitan control ciudadano, investigación e innovación.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOTAIP; política de datos abiertos"
+      },
+      {
+        "id": "LOTDA025-B",
+        "text": "No publicar nada para evitar críticas",
+        "delta": { "legality": -14, "citizenSatisfaction": -16, "institutionalReputation": -12 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. Ocultar información pública por miedo a la crítica contradice la transparencia y la LOTAIP. La rendición de cuentas y los datos abiertos son parte del gobierno electrónico.",
+        "isCorrect": false,
+        "legalReference": "LOTAIP; LOTDA"
+      },
+      {
+        "id": "LOTDA025-C",
+        "text": "Publicar previa anonimización y clasificación de lo que sea sensible o reservado",
+        "delta": { "legality": 24, "citizenSatisfaction": 14, "institutionalReputation": 16 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Excelente. Abrís los datos y a la vez proteges lo sensible (LOPDP) y lo legalmente reservado. Datos abiertos con criterio de protección de datos es la práctica correcta.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOTAIP; LOPDP"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA026",
+    "title": "Sede electrónica: ¿un canal digital oficial de la institución?",
+    "description": "Se propone habilitar una sede electrónica (canal digital oficial) para presentar solicitudes con validez, plazos y acuses electrónicos. Un directivo teme que 'sin papel no hay prueba de nada'.",
+    "category": "digital-procedures",
+    "npcId": "assembly-001",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "sede-electronica", "acuse-de-recibo", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA026-A",
+        "text": "Implementar la sede electrónica con acuses, sellos de tiempo y trazabilidad",
+        "delta": { "legality": 24, "citizenSatisfaction": 18, "institutionalReputation": 18, "budget": -6 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. Una sede electrónica con acuse de recibo y sello de tiempo da MÁS certeza que el papel: registra fecha, hora e integridad de cada presentación. La LOTDA y la Ley de Comercio Electrónico respaldan estos mecanismos de prueba electrónica.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico (acuse y sello de tiempo)"
+      },
+      {
+        "id": "LOTDA026-B",
+        "text": "Rechazar la sede electrónica y seguir solo con presentación física",
+        "delta": { "legality": -14, "citizenSatisfaction": -16, "institutionalReputation": -12 },
+        "xpReward": 5,
+        "educationalFeedback": "❌ Incorrecto. La prueba electrónica (acuse, sello de tiempo, trazabilidad) es válida y robusta. Quedarse solo en papel desaprovecha la LOTDA y ofrece peor servicio.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; Ley de Comercio Electrónico"
+      },
+      {
+        "id": "LOTDA026-C",
+        "text": "Implementarla en paralelo al papel durante una transición, midiendo su adopción",
+        "delta": { "legality": 20, "citizenSatisfaction": 14, "institutionalReputation": 14, "budget": -4 },
+        "xpReward": 65,
+        "educationalFeedback": "✅ Correcto. Una transición con ambos canales reduce el riesgo del cambio y acompaña a usuarios y funcionarios. La meta es consolidar la sede electrónica como canal oficial, no perpetuar el papel.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; gestión del cambio digital"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA027",
+    "title": "El sistema en línea se cae y no hay plan B",
+    "description": "El portal de trámites sufre una caída de dos días. No había respaldos ni plan de continuidad, y miles de trámites quedan paralizados sin alternativa para el ciudadano.",
+    "category": "cybersecurity",
+    "npcId": "minister-002",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "continuidad", "seguridad-informacion", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA027-A",
+        "text": "Establecer respaldos, plan de continuidad y un canal alterno mientras se restablece el servicio",
+        "delta": { "legality": 22, "citizenSatisfaction": 16, "institutionalReputation": 18, "budget": -10 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. El gobierno electrónico exige disponibilidad y continuidad del servicio. La LOTDA y las buenas prácticas de seguridad de la información obligan a contar con respaldos y planes de contingencia para no dejar al ciudadano sin servicio.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; seguridad de la información (respaldo y continuidad)"
+      },
+      {
+        "id": "LOTDA027-B",
+        "text": "Esperar a que 'se arregle solo' sin plan ni canal alterno",
+        "delta": { "legality": -18, "citizenSatisfaction": -20, "institutionalReputation": -16 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. Sin continuidad ni alternativa, la digitalización se vuelve un riesgo. La LOTDA implica servicios digitales confiables y disponibles, con planes ante fallos.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; seguridad de la información"
+      },
+      {
+        "id": "LOTDA027-C",
+        "text": "Restablecer el servicio e implementar monitoreo y pruebas de recuperación periódicas",
+        "delta": { "legality": 22, "citizenSatisfaction": 14, "institutionalReputation": 18, "budget": -8 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Excelente. Además de restablecer, prevenís futuras caídas con monitoreo y pruebas de recuperación. La resiliencia es parte esencial de un gobierno electrónico confiable.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; continuidad y resiliencia de servicios digitales"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA028",
+    "title": "Sospecha de suplantación de identidad en el portal",
+    "description": "Se detecta que alguien realizó trámites en línea a nombre de un ciudadano que asegura no haberlos hecho. Todo salió con sus credenciales, pero él denuncia suplantación.",
+    "category": "cybersecurity",
+    "npcId": "citizen-004",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "suplantacion", "identidad-digital", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA028-A",
+        "text": "Investigar el incidente, preservar los registros y reforzar la autenticación afectada",
+        "delta": { "legality": 24, "institutionalReputation": 18, "citizenSatisfaction": 12 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. La suplantación en servicios digitales exige investigar, preservar logs (evidencia) y reforzar los controles de identidad. La LOPDP obliga a proteger los datos y la LOTDA a que la identidad digital sea confiable. También puede constituir delito informático (COIP).",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP; COIP (delitos informáticos)"
+      },
+      {
+        "id": "LOTDA028-B",
+        "text": "Culpar al ciudadano: 'usó sus claves, es su problema'",
+        "delta": { "legality": -18, "citizenSatisfaction": -20, "institutionalReputation": -14 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Incorrecto. Trasladar toda la culpa al ciudadano sin investigar ignora que la institución debe garantizar una identidad digital segura. La suplantación puede deberse a fallos de seguridad o a un delito que hay que investigar.",
+        "isCorrect": false,
+        "legalReference": "LOPDP; COIP"
+      },
+      {
+        "id": "LOTDA028-C",
+        "text": "Investigar y, según el caso, revertir los trámites indebidos y notificar a las autoridades",
+        "delta": { "legality": 22, "citizenSatisfaction": 16, "institutionalReputation": 16 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Muy bien. Investigás, corregís los efectos de los trámites fraudulentos y activás a las autoridades competentes. Proteger al titular y sanear los actos es la respuesta correcta ante una suplantación.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP; COIP"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA029",
+    "title": "Migrar servicios a la nube: ¿dónde quedan los datos del Estado?",
+    "description": "Se propone migrar servicios públicos a la nube. Un proveedor ofrece una nube muy barata pero sin certificación ni claridad sobre dónde se almacenarán los datos de los ciudadanos.",
+    "category": "cybersecurity",
+    "npcId": "supplier-002",
+    "requiredRank": "director",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "nube", "seguridad", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA029-A",
+        "text": "Exigir nube certificada, con garantías de seguridad y reglas claras sobre el tratamiento de los datos",
+        "delta": { "legality": 24, "institutionalReputation": 18, "budget": -6 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. Migrar a la nube exige certificación, garantías de seguridad y cláusulas claras de tratamiento de datos (LOPDP), incluida la ubicación y el encargado del tratamiento. Lo barato sin garantías pone en riesgo los datos de la ciudadanía.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP (encargado del tratamiento y seguridad)"
+      },
+      {
+        "id": "LOTDA029-B",
+        "text": "Contratar la nube más barata sin verificar certificación ni condiciones de los datos",
+        "delta": { "legality": -22, "institutionalReputation": -16, "budget": -8 },
+        "xpReward": 0,
+        "educationalFeedback": "❌ Grave. Migrar datos públicos a una nube sin garantías compromete la seguridad y la privacidad de millones de personas. El ahorro inicial puede costar una brecha masiva y sanciones bajo la LOPDP.",
+        "isCorrect": false,
+        "legalReference": "LOPDP; LOTDA"
+      },
+      {
+        "id": "LOTDA029-C",
+        "text": "Evaluar riesgos, exigir certificación y firmar un acuerdo de tratamiento de datos con el proveedor",
+        "delta": { "legality": 22, "institutionalReputation": 18, "budget": -6 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Excelente. Evaluás riesgos, exigís certificación y formalizás las obligaciones del proveedor como encargado del tratamiento. Es la forma correcta de aprovechar la nube sin sacrificar la seguridad de los datos del Estado.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; LOPDP Art. 40 (encargado del tratamiento)"
+      }
+    ]
+  },
+  {
+    "id": "LOTDA030",
+    "title": "Trámite digital que sigue exigiendo una diligencia presencial innecesaria",
+    "description": "Un trámite es 90% en línea, pero al final obliga al ciudadano a ir presencialmente solo a 'mostrar la cédula', pese a que su identidad ya se validó digitalmente al ingresar al portal.",
+    "category": "digital-procedures",
+    "npcId": "citizen-002",
+    "requiredRank": "coordinator",
+    "difficulty": "hard",
+    "tags": ["LOTDA", "rediseno-de-tramites", "identidad-digital", "gobierno-electronico"],
+    "options": [
+      {
+        "id": "LOTDA030-A",
+        "text": "Rediseñar el trámite para completarlo en línea, apoyándose en la validación digital de identidad ya realizada",
+        "delta": { "legality": 22, "citizenSatisfaction": 20, "institutionalReputation": 16, "budget": 4 },
+        "xpReward": 80,
+        "educationalFeedback": "✅ Correcto. Si la identidad ya se validó digitalmente, exigir además una diligencia presencial solo para 'mostrar la cédula' es un paso redundante. La LOTDA impulsa rediseñar trámites de extremo a extremo, eliminando pasos presenciales innecesarios.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; simplificación y rediseño de trámites"
+      },
+      {
+        "id": "LOTDA030-B",
+        "text": "Mantener el paso presencial 'por si acaso', aunque la identidad ya esté validada",
+        "delta": { "legality": -12, "citizenSatisfaction": -18, "institutionalReputation": -10 },
+        "xpReward": 6,
+        "educationalFeedback": "❌ Incorrecto. Un trámite '90% digital' que obliga a ir en persona por un paso redundante frustra al ciudadano y desvirtúa el gobierno electrónico. La validación digital ya cumplió esa función.",
+        "isCorrect": false,
+        "legalReference": "LOTDA; simplificación de trámites"
+      },
+      {
+        "id": "LOTDA030-C",
+        "text": "Eliminar el paso presencial y reforzar, si hace falta, la validación digital de identidad",
+        "delta": { "legality": 22, "citizenSatisfaction": 18, "institutionalReputation": 16 },
+        "xpReward": 75,
+        "educationalFeedback": "✅ Muy bien. Quitás el paso presencial redundante y, si el riesgo lo amerita, reforzás la validación digital. Así el trámite queda 100% en línea sin sacrificar seguridad.",
+        "isCorrect": true,
+        "legalReference": "LOTDA; identidad digital y rediseño de trámites"
+      }
+    ]
+  }
+]
