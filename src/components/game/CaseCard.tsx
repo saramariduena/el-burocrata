@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import type { GameCase } from '@/types';
+
+// Segundos por pregunta en el nivel AVANZADO (presión de tiempo).
+const HARD_SECONDS = 20;
 
 const CAT_COLOR: Record<string, string> = {
   transparency: '#06b6d4', accountability: '#a855f7', 'open-data': '#22c55e',
@@ -17,7 +20,7 @@ const CAT_LABEL: Record<string, string> = {
   transparency: '🔍 Transparencia', accountability: '📊 Rendición de Cuentas',
   'open-data': '📂 Datos Abiertos', 'digital-government': '💻 Gobierno Digital',
   cybersecurity: '🛡️ Ciberseguridad', 'data-protection': '🔒 Protección de Datos',
-  'public-ethics': '🏛️ Ética Pública', 'ethics-corruption': '⚖️ Anticorrupción',
+  'public-ethics': '🏰 Ética Pública', 'ethics-corruption': '⚖️ Anticorrupción',
   'ai-government': '🤖 IA Gubernamental', 'citizen-participation': '👥 Participación',
   'electronic-signature': '✍️ Firma Electrónica', 'e-government': '🖥️ e-Gobierno',
 };
@@ -33,14 +36,32 @@ interface Props { gameCase: GameCase; npcName: string; npcAvatar: string; npcPer
 
 export function CaseCard({ gameCase, npcName, npcAvatar, npcPersonality }: Props) {
   const resolveCase = useGameStore((s) => s.resolveCase);
+  const difficulty  = useGameStore((s) => s.save?.difficulty);
   const [selected, setSelected] = useState<string | null>(null);
   const color = CAT_COLOR[gameCase.category] ?? '#3b82f6';
+
+  const timed = difficulty === 'hard';
+  const [timeLeft, setTimeLeft] = useState(HARD_SECONDS);
 
   function pick(optId: string) {
     if (selected) return;
     setSelected(optId);
     setTimeout(() => resolveCase(gameCase.id, optId), 350);
   }
+
+  // Temporizador solo en AVANZADO. Si se agota el tiempo, se toma como
+  // respuesta incorrecta (penalización) para hacer el nivel muy difícil.
+  useEffect(() => {
+    if (!timed || selected) return;
+    if (timeLeft <= 0) {
+      const wrong = gameCase.options.find((o) => !o.isCorrect) ?? gameCase.options[0];
+      pick(wrong.id);
+      return;
+    }
+    const t = setTimeout(() => setTimeLeft((v) => v - 1), 1000);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timed, timeLeft, selected]);
 
   return (
     <motion.div
@@ -111,6 +132,15 @@ export function CaseCard({ gameCase, npcName, npcAvatar, npcPersonality }: Props
         <div style={{ padding: '10px 16px', background: `${color}18`, borderBottom: `1px solid ${color}33`, display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 16 }}>⚖️</span>
           <span style={{ fontSize: 12, fontWeight: 800, color, letterSpacing: 2 }}>¿QUÉ DECIDES?</span>
+          {timed && !selected && (
+            <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, fontWeight: 900, color: timeLeft <= 5 ? '#ef4444' : '#f59e0b' }}>
+              <motion.span
+                animate={timeLeft <= 5 ? { scale: [1, 1.25, 1] } : {}}
+                transition={{ duration: 0.6, repeat: Infinity }}
+              >⏱️</motion.span>
+              {timeLeft}s
+            </span>
+          )}
         </div>
 
         <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>

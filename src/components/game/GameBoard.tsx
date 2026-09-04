@@ -11,6 +11,7 @@ import { GameOverScreen } from './GameOverScreen';
 import { pickNextCase } from '@/services/caseEngine';
 import { shouldTriggerEvent, pickRandomEvent } from '@/services/eventEngine';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { SoundToggle } from '@/components/ui/SoundToggle';
 import npcProfiles from '@/data/npcs/profiles.json';
 
 export function GameBoard() {
@@ -86,6 +87,7 @@ export function GameBoard() {
 
   return (
     <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', minHeight: '100vh' }}>
+      <SoundToggle />
       <HUD />
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: isMobile ? 'flex-start' : 'center', padding: isMobile ? '14px 12px 32px' : '16px 32px', overflowY: 'auto' }}>
