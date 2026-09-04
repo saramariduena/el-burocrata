@@ -1,7 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
+import { sound } from '@/utils/sound';
 
 export function FeedbackModal() {
   const showFeedback      = useGameStore((s) => s.showFeedback);
@@ -11,6 +13,14 @@ export function FeedbackModal() {
 
   const ok    = lastChoiceCorrect;
   const color = ok ? '#22c55e' : '#ef4444';
+
+  // Efecto de sonido al mostrar el resultado.
+  useEffect(() => {
+    if (!showFeedback) return;
+    if (ok) sound.correct();
+    else sound.wrong();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showFeedback]);
 
   return (
     <AnimatePresence>

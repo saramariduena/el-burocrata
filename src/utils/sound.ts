@@ -112,10 +112,27 @@ function beep(freqs: number[], type: OscillatorType = 'triangle', noteDur = 0.12
   });
 }
 
+let unlockArmed = false;
+
+// Desbloquea el audio con el primer gesto del usuario en cualquier parte de la
+// página (algunos navegadores bloquean el sonido hasta que el usuario interactúa).
+function armUnlock(): void {
+  if (unlockArmed || typeof window === 'undefined') return;
+  unlockArmed = true;
+  const unlock = () => {
+    const c = ensureCtx();
+    if (c && c.state === 'suspended') c.resume().catch(() => {});
+  };
+  ['pointerdown', 'touchstart', 'keydown', 'click'].forEach((ev) =>
+    window.addEventListener(ev, unlock, { passive: true })
+  );
+}
+
 export const sound = {
   // Debe llamarse dentro de un gesto del usuario (clic) para desbloquear el audio.
   init(): void {
     muted = readMuted();
+    armUnlock();
     const c = ensureCtx();
     if (c && c.state === 'suspended') c.resume().catch(() => {});
   },
@@ -139,7 +156,7 @@ export const sound = {
   wrong():   void { beep([311.13, 220.0], 'sawtooth', 0.18, 0.14); },           // descendente grave
   click():   void { beep([440], 'sine', 0.06, 0.08); },
 
-  isMuted(): boolean { return muted; },
+  isMuted(): boolean { return readMuted(); },
 
   toggleMute(): boolean {
     muted = !muted;
