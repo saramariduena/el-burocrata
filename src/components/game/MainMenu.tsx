@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { getTodayScores, clearToday, type ScoreEntry } from '@/utils/leaderboard';
+import { sound } from '@/utils/sound';
+import { SoundToggle } from '@/components/ui/SoundToggle';
 import type { Difficulty } from '@/types';
 
 const CHARS = [
@@ -19,7 +21,7 @@ const CHARS = [
 const DIFFS: { id: Difficulty; emoji: string; label: string; desc: string; color: string }[] = [
   { id: 'easy',   emoji: '😊', label: 'FÁCIL',    desc: 'Para aprender tranquilo', color: '#22c55e' },
   { id: 'normal', emoji: '🎯', label: 'INTERMEDIO', desc: 'Equilibrado',           color: '#3b82f6' },
-  { id: 'hard',   emoji: '🔥', label: 'AVANZADO', desc: 'Más presión y eventos',  color: '#f97316' },
+  { id: 'hard',   emoji: '🔥', label: 'AVANZADO', desc: 'Muy difícil · ⏱️ 20s por caso', color: '#f97316' },
 ];
 
 export function MainMenu() {
@@ -32,8 +34,13 @@ export function MainMenu() {
   const [difficulty, setDifficulty] = useState<Difficulty>('normal');
   const [ranking,    setRanking]    = useState<ScoreEntry[]>([]);
 
+  // Prepara el audio y arma el desbloqueo por toque apenas carga el menú.
+  useEffect(() => { sound.init(); }, []);
+
   function start() {
     if (!name.trim()) return;
+    sound.init();
+    sound.startMusic();
     initGame(name.trim(), difficulty, 'campaign');
   }
 
@@ -95,6 +102,7 @@ export function MainMenu() {
 
   if (step === 'home') return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 24, background: 'linear-gradient(160deg, #0f172a 0%, #1e1b4b 100%)' }}>
+      <SoundToggle />
 
       {/* Título */}
       <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: 'center', marginBottom: isMobile ? 24 : 32 }}>
@@ -143,7 +151,7 @@ export function MainMenu() {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => useGameStore.getState().loadGame()}
+            onClick={() => { sound.init(); sound.startMusic(); useGameStore.getState().loadGame(); }}
             style={{ padding: '14px 24px', borderRadius: 14, border: '2px solid #22c55e', cursor: 'pointer', fontWeight: 700, fontSize: 14, background: 'rgba(34,197,94,0.1)', color: '#22c55e' }}
           >
             📂 CONTINUAR — {save.playerName}
