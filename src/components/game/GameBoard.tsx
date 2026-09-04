@@ -59,14 +59,10 @@ export function GameBoard() {
       }
     }
 
-    // Reciclar IDs resueltos para que los casos se repitan (excepto el último lote)
-    const resolvedIds = save.resolvedCaseIds.length >= 6
-      ? save.resolvedCaseIds.slice(-4)
-      : save.resolvedCaseIds;
-
+    // No repetir ningún caso ya resuelto dentro de la partida (hay 150 casos disponibles).
     const nextCase = pickNextCase(
       save.currentRank,
-      resolvedIds,
+      save.resolvedCaseIds,
       save.difficulty,
       lastCategoryRef.current as never
     );

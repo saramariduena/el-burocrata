@@ -30,31 +30,16 @@ const ALL_CASES: GameCase[] = [
   ...(lotdaCases as GameCase[]),
 ];
 
-const RANK_ORDER: PlayerRank[] = [
-  'auxiliary',
-  'analyst',
-  'coordinator',
-  'director',
-  'viceminister',
-  'minister',
-];
-
-function rankIndex(rank: PlayerRank): number {
-  return RANK_ORDER.indexOf(rank);
-}
-
 export function getAvailableCases(
-  currentRank: PlayerRank,
+  _currentRank: PlayerRank,
   resolvedIds: string[],
   difficulty: Difficulty
 ): GameCase[] {
-  const ri = rankIndex(currentRank);
+  // El nivel elegido manda: FÁCIL → casos fáciles, INTERMEDIO → normales,
+  // AVANZADO → difíciles. Así cada dificultad muestra solo sus propios casos.
   return ALL_CASES.filter((c) => {
     if (resolvedIds.includes(c.id)) return false;
-    if (rankIndex(c.requiredRank) > ri) return false;
-    if (difficulty === 'easy' && c.difficulty === 'expert') return false;
-    if (difficulty === 'normal' && c.difficulty === 'expert') return false;
-    return true;
+    return c.difficulty === difficulty;
   });
 }
 
