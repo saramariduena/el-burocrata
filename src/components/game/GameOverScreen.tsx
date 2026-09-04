@@ -5,12 +5,20 @@ import { motion } from 'framer-motion';
 import { useGameStore } from '@/store/gameStore';
 import { computeFinalScore, getLetterGrade } from '@/utils/statistics';
 import { addScore, getTodayScores, type ScoreEntry } from '@/utils/leaderboard';
+import type { Difficulty } from '@/types';
 
 const LAST_KEY = 'el-burocrata-ranking-last';
+
+// Progresión de niveles: Fácil → Intermedio → Avanzado.
+const NEXT_LEVEL: Partial<Record<Difficulty, { id: Difficulty; label: string; emoji: string }>> = {
+  easy:   { id: 'normal', label: 'INTERMEDIO', emoji: '🎯' },
+  normal: { id: 'hard',   label: 'AVANZADO',   emoji: '🔥' },
+};
 
 export function GameOverScreen() {
   const save      = useGameStore((s) => s.save);
   const resetGame = useGameStore((s) => s.resetGame);
+  const initGame  = useGameStore((s) => s.initGame);
 
   const [ranking, setRanking] = useState<ScoreEntry[]>([]);
 
@@ -133,14 +141,38 @@ export function GameOverScreen() {
             )}
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={resetGame}
-            style={{ width: '100%', padding: 16, borderRadius: 14, border: 'none', cursor: 'pointer', fontWeight: 800, fontSize: 15, background: victory ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'linear-gradient(135deg, #6366f1, #3b82f6)', color: '#fff' }}
-          >
-            NUEVA PARTIDA
-          </motion.button>
+          {(() => {
+            const next = victory ? NEXT_LEVEL[save.difficulty] : undefined;
+            return (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {next && (
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => initGame(save.playerName, next.id, 'campaign')}
+                    style={{ width: '100%', padding: 16, borderRadius: 14, border: 'none', cursor: 'pointer', fontWeight: 800, fontSize: 15, background: 'linear-gradient(135deg, #f59e0b, #f97316)', color: '#fff' }}
+                  >
+                    {next.emoji} SIGUIENTE NIVEL: {next.label}
+                  </motion.button>
+                )}
+
+                {victory && !next && (
+                  <div style={{ padding: 12, background: 'rgba(245,158,11,0.12)', borderRadius: 12, border: '1px solid #f59e0b44', textAlign: 'center', fontSize: 13, color: '#fbbf24', fontWeight: 700 }}>
+                    🏅 ¡Completaste el nivel más difícil!
+                  </div>
+                )}
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={resetGame}
+                  style={{ width: '100%', padding: 16, borderRadius: 14, border: 'none', cursor: 'pointer', fontWeight: 800, fontSize: 15, background: next ? '#334155' : (victory ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 'linear-gradient(135deg, #6366f1, #3b82f6)'), color: '#fff' }}
+                >
+                  {next ? 'MENÚ PRINCIPAL' : 'NUEVA PARTIDA'}
+                </motion.button>
+              </div>
+            );
+          })()}
         </div>
       </motion.div>
     </motion.div>
